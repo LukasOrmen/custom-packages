@@ -1,5 +1,6 @@
 import pathlib
 import json
+import os
 
 def changeatt(dict_, path, easypath=False):
     try:
@@ -43,6 +44,10 @@ def returnatt(list_, path, easypath=False):
 
 def addatt(dict_, path, easypath=False):
     try:
+        if easypath == True:
+            path = os.getcwd() + path
+        else:
+            pass
         with pathlib.Path(path).open() as f:
             original = json.loads(f.read())
         for key, value in dict_.items():
